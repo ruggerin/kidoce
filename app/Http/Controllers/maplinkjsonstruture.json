@@ -1,0 +1,228 @@
+{
+	"callback": {
+        "password": "",
+        "url": "http://hds.auslog.com.br/maplinkplanning",
+        "user": ""
+    },
+	"optimizationProfile" : "BRAZIL",
+	"tripsProfile" : "BRAZIL",
+	"startDate": 1513750219000,
+	"legislationProfiles": 
+	[
+		{
+			"name": "DEFAULT"
+		}
+	],
+
+	"logisticConstraints": 
+	[
+		{
+			"name": "DEFAULT",
+			"siteUnloadingFixedTime": 0
+		}
+	],
+	
+	"products": 
+	[
+		{
+			"name": "DEFAULT",
+			"type": "manufactured"
+		}
+	],
+		"sites": 
+		[
+		  
+		],
+		
+		"depots": 
+		[
+		  {
+			"name": "CD",
+			"coordinates": 
+			{
+						"latitude": -3.134930,
+						"longitude":-60.008037
+			},
+
+			"logisticConstraints": "DEFAULT"
+		}
+	],
+
+		"vehicleTypes": 
+		[
+		  {
+			"name": "VUC",
+			"maxVolume": 20,
+			"maxWeight": 12000,
+			"size": 1
+		  }
+		],
+		"vehicles": [
+		  {
+			"name": "VUC_1",
+			"vehicleType": "VUC",
+			"legislationProfile": "DEFAULT",
+			"availablePeriods": 
+			[
+				{
+					"departureSite": "CD",
+					"arrivalSite": "CD",
+					"timeWindow": 
+					{
+						"start": 1513753200000,
+						"end": 1513796400000
+					},
+
+					"maxRoutesNumber": 1
+				}
+			]
+		}
+		],
+		"operations": [
+		  {
+			"id": "P1",
+			"priority": 0,
+			"weight": 2,
+			"volume": 2,
+			"product": "DEFAULT",
+			"type": "DELIVERY",
+			"depotSite": "CD",
+			"customerSite": "Cliente1",
+			"customerTimeWindows": [
+			  {
+				"start": 1513756800000,
+				"end":  1513771200000
+			  }
+			],
+
+			"preAllocatedVehicleName": null
+		},
+			{
+			"id": "P2",
+			"priority": 0,
+			"weight": 2,
+			"volume": 2,
+			"product": "DEFAULT",
+			"type": "DELIVERY",
+			"depotSite": "CD",
+			"customerSite": "Cliente27",
+			"customerTimeWindows": [
+			  {
+				"start": 1513756800000,
+				"end":  1513771200000
+			  }
+			],
+
+			"preAllocatedVehicleName": null
+		},
+			{
+			"id": "P3",
+			"priority": 0,
+			"weight": 2,
+			"volume": 2,
+			"product": "DEFAULT",
+			"type": "DELIVERY",
+			"depotSite": "CD",
+			"customerSite": "Cliente16",
+			"customerTimeWindows": [
+			  {
+				"start": 1513756800000,
+				"end":  1513771200000
+			  }
+			],
+
+			"preAllocatedVehicleName": null
+		},
+			{
+			"id": "P4",
+			"priority": 0,
+			"weight": 2,
+			"volume": 2,
+			"product": "DEFAULT",
+			"type": "DELIVERY",
+			"depotSite": "CD",
+			"customerSite": "Cliente32",
+			"customerTimeWindows": [
+			  {
+				"start": 1513756800000,
+				"end":  1513771200000
+			  }
+			],
+
+			"preAllocatedVehicleName": null
+		},
+			{
+			"id": "P5",
+			"priority": 0,
+			"weight": 2,
+			"volume": 2,
+			"product": "DEFAULT",
+			"type": "DELIVERY",
+			"depotSite": "CD",
+			"customerSite": "Cliente9",
+			"customerTimeWindows": [
+			  {
+				"start": 1513756800000,
+				"end":  1513771200000
+			  }
+			],
+
+			"preAllocatedVehicleName": null
+		},
+			{
+			
+			"id": "P6",
+			"priority": 0,
+			"weight": 2,
+			"volume": 2,
+			"product": "DEFAULT",
+			"type": "DELIVERY",
+			"depotSite": "CD",
+			"customerSite": "Cliente29",
+			"customerTimeWindows": [
+			  {
+				"start": 1513756800000,
+				"end":  1513771200000
+			  }
+			],
+
+			"preAllocatedVehicleName": null
+		},	
+			{
+			"id": "P7",
+			"priority": 0,
+			"weight": 2,
+			"volume": 2,
+			"product": "DEFAULT",
+			"type": "DELIVERY",
+			"depotSite": "CD",
+			"customerSite": "Cliente6",
+			"customerTimeWindows": [
+			  {
+				"start": 1513756800000,
+				"end":  1513771200000
+			  }
+			],
+
+			"preAllocatedVehicleName": null
+		},	
+			{
+			"id": "P8",
+			"priority": 0,
+			"weight": 2,
+			"volume": 2,
+			"product": "DEFAULT",
+			"type": "DELIVERY",
+			"depotSite": "CD",
+			"customerSite": "Cliente15",
+			"customerTimeWindows": [
+			  {
+				"start": 1513756800000,
+				"end":  1513771200000
+			  }
+			],
+
+			"preAllocatedVehicleName": null
+		}
+	]
+}
