@@ -8,7 +8,7 @@
         <meta name="author" content="Themesbox">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title> @yield('title') </title>
+        <title>{{ $title or 'Admin'}} </title>
         <!-- Fevicon -->
         <link rel="shortcut icon" href="{{ asset('orbiter/images/favicon.ico') }}">
         <!-- Start CSS -->   
@@ -24,7 +24,7 @@
         <!-- Start Infobar Setting Sidebar -->
         <div id="infobar-settings-sidebar" class="infobar-settings-sidebar">
             <div class="infobar-settings-sidebar-head d-flex w-100 justify-content-between">
-                <h4>Settings</h4><a href="javascript:void(0)" id="infobar-settings-close" class="infobar-settings-close"><img src="orbiter/images/svg-icon/close.svg" class="img-fluid menu-hamburger-close" alt="close"></a>
+                <h4>Settings</h4><a href="javascript:void(0)" id="infobar-settings-close" class="infobar-settings-close"><img src="{{asset('orbiter/images/svg-icon/close.svg')}}" class="img-fluid menu-hamburger-close" alt="close"></a>
             </div>
             <div class="infobar-settings-sidebar-body">
                 <div class="custom-mode-setting">

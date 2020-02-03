@@ -1,172 +1,156 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Auslog Promoter - Login </title>
-    <!-- Favicon-->
-
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ URL::asset('favicon/apple-icon-57x57.png')}}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{ URL::asset('favicon/apple-icon-60x60.png')}}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ URL::asset('favicon/apple-icon-72x72.png')}}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ URL::asset('favicon/apple-icon-76x76.png')}}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ URL::asset('favicon/apple-icon-114x114.png')}}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ URL::asset('favicon/apple-icon-120x120.png')}}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ URL::asset('favicon/apple-icon-144x144.png')}}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ URL::asset('favicon/apple-icon-152x152.png')}}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ URL::asset('favicon/apple-icon-180x180.png')}}">
-    <link rel="icon" type="image/png" sizes="192x192"  href="{{ URL::asset('favicon/android-icon-192x192.png')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ URL::asset('favicon/favicon-32x32.png')}}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{{ URL::asset('favicon/favicon-96x96.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ URL::asset('favicon/favicon-16x16.png')}}">
-    <link rel="manifest" href="{{ URL::asset('favicon/manifest.json')}}">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{{ URL::asset('favicon/ms-icon-144x144.png')}}">
-    <meta name="theme-color" content="#ffffff">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
-    <!-- Bootstrap Core Css -->
-    <link href="{{  asset('/ambiente/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Orbiter is a bootstrap minimal & clean admin template">
+    <meta name="keywords" content="admin, admin panel, admin template, admin dashboard, responsive, bootstrap 4, ui kits, ecommerce, web app, crm, cms, html, sass support, scss">
+    <meta name="author" content="Themesbox">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Orbiter - Login</title>
+    <!-- Fevicon -->
+    <link rel="shortcut icon" href="{{ asset('orbiter/images/favicon.ico') }}">
+    <!-- Start CSS -->
+    <link href="{{ asset('orbiter/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('orbiter/css/icons.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('orbiter/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('orbiter/css/style.css') }}" rel="stylesheet" type="text/css">
 
     <!-- Waves Effect Css -->
     <link href="{{  asset('/ambiente/plugins/node-waves/waves.css') }}" rel="stylesheet">
 
-    <!-- Animation Css -->
-    <link href="{{ asset('/ambiente/plugins/animate-css/animate.css') }}" rel="stylesheet">
-
-    <!-- Custom Css -->
-    <link href="{{  asset('/ambiente/css/style.css') }}" rel="stylesheet">
+    <!-- End CSS -->
 </head>
-
-<body class="login-page">
-
-	<div align="center"> 
-	<img src="{{ URL::asset('/favicon/favicon-96x96.png')}}" style="width:70px; height:65px"/>
-	</div>											
-    <div class="login-box">
-	    <div class="logo">
-	        <a>Auslog Promotor</a>
-            <small>  <p>Web<b>Admin</p></a></small>
-        </div>
-        <div class="card">
-            <div class="body">
-                <form method="POST" action="{{ route('login') }}">
-                        @csrf
-                    <div class="msg">Acesso Restrito</div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">person</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="text" class="form-control" name="email" placeholder="Usuário" required autofocus>
-                           
+<body class="vertical-layout">
+   
+    <!-- Start Containerbar -->
+    <div id="containerbar" class="containerbar authenticate-bg">
+        <!-- Start Container -->
+        <div class="container">
+            <div class="auth-box login-box">
+                <!-- Start row -->
+                <div class="row no-gutters align-items-center justify-content-center">
+                    <!-- Start col -->
+                    <div class="col-md-6 col-lg-5">
+                        <!-- Start Auth Box -->
+                        <div class="auth-box-right">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form method="POST" action="{{ route('login') }}">
+                                        @csrf
+                                        <div class="form-head">
+                                            <a href="{{url('/')}}" class="logo"><img src="{{ asset('orbiter/images/logo.svg')}}" class="img-fluid" alt="logo"></a>
+                                        </div>                                        
+                                        <h4 class="text-primary my-4">Administração</h4>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="email" placeholder="E-mail" required autofocus>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" name="password" placeholder="Senha" required>
+                                        </div>
+                                        <div class="form-row mb-3">
+                                         
+                                            <div class="col-sm-6">
+                                                 {{--  
+                                                <div class="custom-control custom-checkbox text-left">
+                                                  <input type="checkbox" class="custom-control-input" id="rememberme">
+                                                  <label class="custom-control-label font-14" for="rememberme">Lembrar dos dados</label>
+                                                </div>  
+                                                 --}}                                 
+                                            </div>
+                                            
+                                            <div class="col-sm-6">
+                                              <div class="forgot-psw"> 
+                                                <a id="forgot-psw" href="{{url('/user-forgotpsw')}}" class="font-14">Esqueceu sua senha?</a>
+                                              </div>
+                                            </div>
+                                        </div>
+                                                              
+                                      <button type="submit" class="btn btn-success btn-lg btn-block font-18">Entrar</button>
+                                    </form>
+                                    
+                                </div>
+                            </div>
                         </div>
+                        <!-- End Auth Box -->
                     </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">lock</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="password" class="form-control" name="password" placeholder="Senha" required>
-                        </div>
-                       
-                    </div>
-                   
-                    <div class="row">
-                        <div class="col-xs-8 p-t-5" style=" visibility:hidden" >
-                            <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
-                            <label for="rememberme">Remember Me</label>
-                        </div>
-                        <div class="col-xs-4">
-                            <button class="btn btn-block bg-pink waves-effect" type="submit">Entrar</button>
-                        </div>
-                    </div>
-                    <div class="row m-t-15 m-b--20">
-                        
-                        <div class="col-xs-6 align-right">
-                            <a href="forgot-password.html">Esqueci minha senha</a>
-                        </div>
-                    </div>
-                </form>
+                    <!-- End col -->
+                </div>
+                <!-- End row -->
             </div>
         </div>
+        <!-- End Container -->
     </div>
-
-    <!-- Jquery Core Js -->
-    <script src="{{ asset('/ambiente/plugins/jquery/jquery.min.js')}}"></script>
-
-    <!-- Bootstrap Core Js -->
-    <script src="{{ URL::asset('ambiente/plugins/bootstrap/js/bootstrap.js')}}"></script>
-
-    <!-- Waves Effect Plugin Js -->
-    <script src="{{ URL::asset('ambiente/plugins/node-waves/waves.js')}}"></script>
-
-    <!-- Validation Plugin Js -->
-    <script src="{{ URL::asset('/ambiente/plugins/jquery-validation/jquery.validate.js')}}"></script>
-
-    <!-- Custom Js -->
-    <script src="{{ URL::asset('ambiente/js/admin.js')}}"></script>
-    <script src="{{ URL::asset('ambiente/js/pages/examples/sign-in.js')}}"></script>
-
+    <!-- End Containerbar -->
+    <!-- Start JS -->        
+    <script src="{{ asset('orbiter/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('orbiter/js/popper.min.js') }}"></script>
+    <script src="{{ asset('orbiter/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('orbiter/js/modernizr.min.js') }}"></script>
+    <script src="{{ asset('orbiter/js/detect.js') }}"></script>
+    <script src="{{ asset('orbiter/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('orbiter/js/custom/custom-toasts.js') }}"></script>
     <script src="{{ URL::asset('ambiente/plugins/bootstrap-notify/bootstrap-notify.js')}}"></script>
+
     <script>
-      $(function () {
-    $('.jsdemo-notification-button button').on('click', function () {
-        var placementFrom = $(this).data('placement-from');
-        var placementAlign = $(this).data('placement-align');
-        var animateEnter = $(this).data('animate-enter');
-        var animateExit = $(this).data('animate-exit');
-        var colorName = $(this).data('color-name');
-
-        showNotification(colorName, null, placementFrom, placementAlign, animateEnter, animateExit);
-    }); 
-    @if ($errors->has('email'))
-    showNotification('alert-danger','Usuário ou senha incorretas','bottom','right','','');                        
-    @endif
-    
-});
-
-function showNotification(colorName, text, placementFrom, placementAlign, animateEnter, animateExit) {
-    if (colorName === null || colorName === '') { colorName = 'bg-black'; }
-    if (text === null || text === '') { text = 'Turning standard Bootstrap alerts'; }
-    if (animateEnter === null || animateEnter === '') { animateEnter = 'animated fadeInDown'; }
-    if (animateExit === null || animateExit === '') { animateExit = 'animated fadeOutUp'; }
-    var allowDismiss = true;
-
-    $.notify({
-        message: text
-    },
-        {
-            type: colorName,
-            allow_dismiss: allowDismiss,
-            newest_on_top: true,
-            timer: 2000,
-            placement: {
-                from: placementFrom,
-                align: placementAlign
-            },
-            animate: {
-                enter: animateEnter,
-                exit: animateExit
-            },
-            template: '<div data-notify="container" class="bootstrap-notify-container alert alert-dismissible {0} ' + (allowDismiss ? "p-r-35" : "") + '" role="alert">' +
-            '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">x</button>' +
-            '<span data-notify="icon"></span> ' +
-            '<span data-notify="title">{1}</span> ' +
-            '<span data-notify="message">{2}</span>' +
-            '<div class="progress" data-notify="progressbar">' +
-            '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
-            '</div>' +
-            '<a href="{3}" target="{4}" data-notify="url"></a>' +
-            '</div>'
+        $(function () {
+            $('.jsdemo-notification-button button').on('click', function () {
+                var placementFrom = $(this).data('placement-from');
+                var placementAlign = $(this).data('placement-align');
+                var animateEnter = $(this).data('animate-enter');
+                var animateExit = $(this).data('animate-exit');
+                var colorName = $(this).data('color-name');
+        
+                showNotification(colorName, null, placementFrom, placementAlign, animateEnter, animateExit);
+            }); 
+            @if ($errors->has('email'))
+                showNotification('alert-danger','Usuário ou senha incorretas','bottom','right','','');                        
+            @endif
+            
         });
-}
+  
+        function showNotification(colorName, text, placementFrom, placementAlign, animateEnter, animateExit) {
+            if (colorName === null || colorName === '') { colorName = 'bg-black'; }
+            if (text === null || text === '') { text = 'Turning standard Bootstrap alerts'; }
+            if (animateEnter === null || animateEnter === '') { animateEnter = 'animated fadeInDown'; }
+            if (animateExit === null || animateExit === '') { animateExit = 'animated fadeOutUp'; }
+            var allowDismiss = true;
+        
+            $.notify({
+                message: text
+            },
+                {
+                    type: colorName,
+                    allow_dismiss: allowDismiss,
+                    newest_on_top: true,
+                    timer: 2000,
+                    placement: {
+                        from: placementFrom,
+                        align: placementAlign
+                    },
+                    animate: {
+                        enter: animateEnter,
+                        exit: animateExit
+                    },
+                    template: '<div data-notify="container" class="bootstrap-notify-container alert alert-dismissible {0} ' + (allowDismiss ? "p-r-35" : "") + '" role="alert">' +
+                        '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">x</button>' +
+                        '<span data-notify="icon"></span> ' +
+                        '<span data-notify="title">{1}</span> ' +
+                        '<span data-notify="message">{2}</span>' +
+                        '<div class="progress" data-notify="progressbar">' +
+                        '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+                        '</div>' +
+                        '<a href="{3}" target="{4}" data-notify="url"></a>' +
+                    '</div>'
+            });
+        }
+  
+    </script>        
+    <!-- End js -->
 
-    </script>    
+   
+
+  
 </body>
-
 </html>

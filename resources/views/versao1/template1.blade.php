@@ -184,7 +184,7 @@
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                 {{ __('Alternar Menu') }}
-                            </a>></li>
+                            </a></li>
                             <li> <a class="waves-effect waves-block" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
@@ -196,7 +196,7 @@
                 </div>
             </div>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
+                @csrf
             </form>
             <!-- #User Info -->
             <!-- Menu -->

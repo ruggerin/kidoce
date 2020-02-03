@@ -11,14 +11,20 @@
 |
 */
 Route::get('/',function(){
-  return view('index');
+  return redirect()->route('home');
 });
-
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
-
+ 
 
 
-//Route::middleware('can:teste')->group(function(){
+//Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
+Route::group(['prefix' => 'admin'], function(){
+  Auth::routes();
+ 
+  Route::get('vieworbiter',function(){
+    return view('layouts.main');
+  });
+
+  //Route::middleware('can:teste')->group(function(){
 
   Route::post('/entregas/buscarcliente','LojasController@buscarLoja')->name('entregas.buscarLoja');
   Route::get('/entregas/ultimaposicao','AppClientBeta@UltimaLocalizacaoMotoristas')->name('ultimaposicao');
@@ -81,10 +87,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
   });
   
  } );
- 
-Auth::routes();
- 
-
 
 
 Route::post('/testecadcli', 'Api\SubirDados@Cadcli');
