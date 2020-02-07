@@ -39,8 +39,9 @@ class UsersController extends Controller
     public function create()
     {
         $title = 'Nova Loja';
-        $perfisAcesso = ['ADMIN','ANALISTA','SUPERVISOR','PROMOTOR','ENTREGADOR'];
-        return view('versao1.usuario', compact('title','perfisAcesso')); 
+        $perfisAcesso = ['ADMIN','ANALISTA','SUPERVISOR','PROMOTOR','ENTREGADOR','CLIENTE'];
+        return view('versao1.usuario',['title'=>'TESTE','perfisAcesso'=>$perfisAcesso]); 
+        //return view('versao1.usuario', compact('title','perfisAcesso')); 
 
        
 
@@ -112,8 +113,14 @@ class UsersController extends Controller
         }else{
             $usuario = $users->find($id);
             $title = "Edição de Usuário $id";
-            $perfisAcesso = ['ADMIN','ANALISTA','SUPERVISOR','PROMOTOR'];
-            return view('versao1.usuario', compact('title','usuario','perfisAcesso')); 
+            $perfisAcesso = ['ADMIN','ANALISTA','SUPERVISOR','PROMOTOR','ENTREGADOR','CLIENTE'];
+            //return view('versao1.usuario', compact('title','usuario','perfisAcesso')); 
+          
+            return view('versao1.usuario',[
+                'title'=>$title,
+                'usuario'=>$usuario,
+                'perfisAcesso'=>$perfisAcesso
+            ]); 
         }
     }
 

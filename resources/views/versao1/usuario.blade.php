@@ -109,7 +109,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                                                        
                                         <h4 class="card-inside-title">Perfil de acesso</h4>  
                                     </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">   
+                                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">   
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <select class="form-control" required name="perfilacesso" id="perfilacesso" >                                                                   
@@ -124,6 +124,32 @@
                                                 </select>
                                             </div>
                                         </div>
+
+                                    </div>
+                                    <div class="col-sm-4 col-xs-4">
+                                        <div class="form-group">                                 
+                                            <div class="demo-checkbox">
+                                            @if( !isset($usuario->ativo) || $usuario->ativo==true)    
+                                                <input type="checkbox" id="ativo" name ="ativo" value="on" checked>
+                                            @else 
+                                                <input type="checkbox" id="ativo" value="0" unchecked name ="ativo">
+                                            @endif
+                                            <label for="ativo">Usuário Habilitado</label>                                    
+                                            </div>                              
+                                        </div>   
+                                    </div>
+    
+                                    <div class="col-sm-4 col-xs-4">
+                                        <div class="form-group">                                 
+                                            <div class="demo-checkbox">
+                                            @if( !isset($usuario->administrador) || $usuario->administrador==true)    
+                                                <input type="checkbox" id="administrador" name ="administrador" value="on" checked>
+                                            @else 
+                                                <input type="checkbox" id="administrador" value="0" unchecked name ="administrador">
+                                            @endif
+                                            <label for="administrador">Acesso Web Admin</label>                                    
+                                            </div>                              
+                                        </div>   
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="row">                                                          
@@ -213,33 +239,8 @@
                                                 <label class="form-label">Telefone</label>
                                             </div>                                
                                         </div>   
-                                    </div>
-    
-                                    <div class="col-sm-4 col-xs-4">
-                                        <div class="form-group">                                 
-                                            <div class="demo-checkbox">
-                                            @if( !isset($usuario->ativo) || $usuario->ativo==true)    
-                                                <input type="checkbox" id="ativo" name ="ativo" value="on" checked>
-                                            @else 
-                                                <input type="checkbox" id="ativo" value="0" unchecked name ="ativo">
-                                            @endif
-                                            <label for="ativo">Usuário Habilitado</label>                                    
-                                            </div>                              
-                                        </div>   
-                                    </div>
-    
-                                    <div class="col-sm-4 col-xs-4">
-                                        <div class="form-group">                                 
-                                            <div class="demo-checkbox">
-                                            @if( !isset($usuario->administrador) || $usuario->administrador==true)    
-                                                <input type="checkbox" id="administrador" name ="administrador" value="on" checked>
-                                            @else 
-                                                <input type="checkbox" id="administrador" value="0" unchecked name ="administrador">
-                                            @endif
-                                            <label for="administrador">Acesso Web Admin</label>                                    
-                                            </div>                              
-                                        </div>   
-                                    </div>
+                                    </div>    
+                                  
                                 </div>   
                                 
     
