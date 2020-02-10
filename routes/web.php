@@ -42,11 +42,12 @@ Route::group(['prefix' => 'admin'], function(){
     Route::resource('/tipoprodutos','TipoProdutoController');
     Route::resource('/tipoderegistros','TipoRegistroController');
     Route::resource('/carregamentos','CarregamentosController');
+    Route::resource('/pesquisa','Pesquisa');
     Route::resource('/entregas','PedidosController');
     Route::get('/rtlcarregamentos','CarregamentosController@rlt_carregamentos_index')->name('rlt_carregamentos_index');
     Route::post('/rltcarregamentos/lst','CarregamentosController@buscarCarregamentos' )->name('buscarCarregamentos');
     
-
+    
     Route::get('/rltcarregamentos/analitico/{numcarreg}', 'CarregamentosController@imprimirDetalhesCarregamento')->name('imprimirdetalhescarregamento');
     Route::get('/entregasdashboard', function(){
       return view('versao1.entregas-dashboard');
