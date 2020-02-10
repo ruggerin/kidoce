@@ -9,11 +9,48 @@
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Usuários</h4>
-           
+            <form>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                        <label>Perfil Usuário</label>
+                        <select class="form-control" name="perfilacesso" id="perfilacesso" >                                                                   
+                            <option value="" >--Todos--</option> 
+                            @foreach($perfisAcesso as $pAcesso)      
+                                <option value="{{$pAcesso}}" {{ isset($_GET['perfilacesso']) && $_GET['perfilacesso']== $pAcesso? 'selected' :'' }} >{{$pAcesso}}</option>                                 
+                            @endforeach
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="search" class="form-control" placeholder="Buscar" aria-label="Search" name="nome" id="nome" >                            
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">  
+                            <div class="button-demo">    
+                                <button type="submit" class="btn btn-primary waves-effect">
+                                    <i class="dripicons-search"></i>
+                                    <span>Pesquisar</span> 
+                                </button>                         
+                                <button type="button" class="btn btn-light" onclick="canceledit()" >
+                                    <i class="dripicons-backspace"></i>
+                                    <span>Cancelar</span> 
+                                </button>
+                                                        
+                            </div>                
+                        </div>   
+                    </div>
+
+                </div>
+            </form>
+
         </div>
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
-                <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Novo Cadastro</button>
+                <button class="btn btn-primary-rgba" onclick="novo()"><i class="feather icon-plus mr-2"></i>Novo Cadastro</button>
             </div>                        
         </div>
     </div>          
@@ -27,7 +64,7 @@
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Informações</h5>
+                    <h5 class="card-title">Registros</h5>
                 </div>
                 <div class="card-body">
                     
@@ -73,6 +110,7 @@
     
                             </tbody>
                         </table>
+                        {!! $users->links() !!}
                           
                     </div>
                 </div>

@@ -40,7 +40,8 @@
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-head">
-                                            <a href="{{url('/')}}" class="logo"><img src="{{ asset('orbiter/images/logo.svg')}}" class="img-fluid" alt="logo"></a>
+                                            <a href="{{url('/')}}" class="logo"><img src="{{ asset('img/perfil.png')}}" class="img-fluid" alt="logo"></a>
+                                            <h4 class=" my-4">Ki-Doce Confeitaria</h4>
                                         </div>                                        
                                         <h4 class="text-primary my-4">Administração</h4>
                                         <div class="form-group">

@@ -23,8 +23,24 @@ class UsersController extends Controller
     public function index(User $users)
     {
         $title = 'Cadastro de Lojas';
-        $users =  $users->all();
-        return view('versao1.usuarios', compact('users','title')); 
+        if(empty($_GET['nome'])){
+            unset($_GET['nome']);
+        }
+        unset($_GET['nome']);
+        $nome = isset($_GET['nome'])? $_GET['nome']:'%';
+
+        if(!isset($_GET['perfilacesso']) || strlen($_GET['perfilacesso'] )==0){
+        
+            $condPerfil="<>";
+            $perfisAcessoFiltro ="a";
+        }else{
+            $perfisAcessoFiltro =$_GET['perfilacesso'] ;
+            $condPerfil="=";
+        }
+        
+        $users =  $users->where('nome','like',$nome.'%')->where('perfilacesso',$condPerfil,$perfisAcessoFiltro )->paginate(10);
+        $perfisAcesso = $this->getPerfisAcesso();
+        return view('versao1.usuarios', compact('users','title','perfisAcesso')); 
     }
     
     protected function validator(array $data)
@@ -39,8 +55,8 @@ class UsersController extends Controller
     public function create()
     {
         $title = 'Nova Loja';
-        $perfisAcesso = ['ADMIN','ANALISTA','SUPERVISOR','PROMOTOR','ENTREGADOR','CLIENTE'];
-        return view('versao1.usuario',['title'=>'TESTE','perfisAcesso'=>$perfisAcesso]); 
+        $perfisAcesso = $this->getPerfisAcesso();
+        return view('versao1.usuario',['title'=>'Novo Usuário','perfisAcesso'=>$perfisAcesso]); 
         //return view('versao1.usuario', compact('title','perfisAcesso')); 
 
        
@@ -113,9 +129,8 @@ class UsersController extends Controller
         }else{
             $usuario = $users->find($id);
             $title = "Edição de Usuário $id";
-            $perfisAcesso = ['ADMIN','ANALISTA','SUPERVISOR','PROMOTOR','ENTREGADOR','CLIENTE'];
             //return view('versao1.usuario', compact('title','usuario','perfisAcesso')); 
-          
+            $perfisAcesso = $this->getPerfisAcesso();
             return view('versao1.usuario',[
                 'title'=>$title,
                 'usuario'=>$usuario,
@@ -124,6 +139,11 @@ class UsersController extends Controller
         }
     }
 
+    public function getPerfisAcesso(){
+        $perfisAcesso = ['ADMIN','ANALISTA','SUPERVISOR','PROMOTOR','ENTREGADOR','CLIENTE'];
+        return $perfisAcesso;
+
+    }
 
     public function update(Request $request, $id, User $users)
     {

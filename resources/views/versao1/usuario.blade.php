@@ -4,7 +4,7 @@
 @extends('layouts.main')
 @section('style')
 
-
+<link href="{{asset('orbiter/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}" rel="stylesheet" type="text/css">
 @endsection 
 @section('rightbar-content')
 
@@ -51,7 +51,7 @@
                         <div class="row ">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="row">
-                                    <div class="col-lg-4 col-md4 col-sm-12 col-xs-12">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                         <div class="form-group form-float">                                    
                                             <div class="waves-effect" style=" width:280px; height:280px" onclick="changePorfileImage(0);"   >
                                                 <i class="material-icons center"  style="
@@ -85,9 +85,21 @@
                                                 <div class="form-line">
                                                     <label class="form-label">E-mail/Login</label>
                                                     <input type="text" class="form-control text-lowercase" required autocomplete="off" id="email" value="{{$usuario->email or old('email')}}" name="email">
-                                                
                                                 </div>
                                             </div>
+                                            <label class="form-label">Relacionamento/Conquista</label>
+                                        </div>
+                                                                                
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            
+                                            
+                                            <div class="bootstrap-tagsinput">
+                                                <div class="card-body"  >
+                                                    <input type="text" class="form-control" id="relacionamento" value="{{$usuario->relacionamento or old('relacionamento')}}" name="relacionamento" data-role="tagsinput" />
+                                                </div>
+                                                {{-- <input type="text" class="form-control text-uppercase"  autocomplete="off" id="relacionamento" value="{{$usuario->relacionamento or old('relacionamento')}}" name="relacionamento">--}}
+                                            </div>    
+                                         
                                         </div>
                                         
         
@@ -142,48 +154,23 @@
                                     <div class="col-sm-4 col-xs-4">
                                         <div class="form-group">                                 
                                             <div class="demo-checkbox">
-                                            @if( !isset($usuario->administrador) || $usuario->administrador==true)    
-                                                <input type="checkbox" id="administrador" name ="administrador" value="on" checked>
-                                            @else 
-                                                <input type="checkbox" id="administrador" value="0" unchecked name ="administrador">
+                                            @if(isset($usuario))
+                                                @if($usuario->administrador==true)    
+                                                    <input type="checkbox" id="administrador" name ="administrador" value="on" checked>
+                                                    
+                                                @endif 
+                                                @else
+                                                    <input type="checkbox" id="administrador" value="0" unchecked name ="administrador">
                                             @endif
                                             <label for="administrador">Acesso Web Admin</label>                                    
                                             </div>                              
                                         </div>   
                                     </div>
+                                                                                     
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="row">                                                          
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <h4 class="card-inside-title">Localização</h4>   
-                                            </div>
+                                        <h4 class="card-inside-title">Localização</h4>   
+                                    </div>                                           
 
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                                <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <label class="form-label">Longitude</label>
-                                                        <input type="text" class="form-control text-uppercase" autocomplete="off" id="lat" name="lat" value="{{$usuario->lat or old('lat')}}" >
-                                                    </div>
-                                                </div>                                                
-                                            </div>
-            
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">                                                
-                                                <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <label class="form-label">Longitude</label>
-                                                        <input type="text" class="form-control text-uppercase" autocomplete="off" id="lgn" name="lgn" value="{{$usuario->lgn or old('lgn')}}" >
-                                                      
-                                                    </div>
-                                                </div>
-                                            </div>  
-                                            <div class="row icon-box-list" style=" cursor: pointer;">
-                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                                    <p><i class="feather icon-map-pin"></i></p>
-                                                </div>  
-                                            </div>
-
-                                        </div>
-                                    </div>   
-                                   
     
                                     <div class="col-lg-6 col-md-6  col-sm-12 col-xs-12">
                                         <div class="form-group form-float">                                 
@@ -195,11 +182,20 @@
                                         </div>   
                                     </div>
         
-                                    <div class="col-lg-6 col-md-6  col-sm-12 col-xs-12">
+                                    <div class="col-lg-2 col-md-2  col-sm-12 col-xs-12">
                                         <div class="form-group form-float">                                 
                                             <div class="form-line">
                                                 <label class="form-label">Número</label>
                                                 <input type="text" class="form-control text-uppercase" autocomplete="off" id="numero" value="{{$usuario->numero or old('numero')}}" name="numero">
+                                            </div>
+                                            
+                                        </div>   
+                                    </div>
+                                    <div class="col-lg-2 col-md-2  col-sm-12 col-xs-12">
+                                        <div class="form-group form-float">                                 
+                                            <div class="form-line">
+                                                <label class="form-label">Cep</label>
+                                                <input type="text" class="form-control text-uppercase" autocomplete="off" id="cep" value="{{$usuario->cep or old('cep')}}" name="cep">
                                             </div>
                                             
                                         </div>   
@@ -231,19 +227,56 @@
                                             </div>                                
                                         </div>   
                                     </div>
+
+                                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <label class="form-label">Ponto de Referências</label>
+                                                <input type="text" class="form-control text-uppercase" autocomplete="off" id="pontoreferencia" name="pontoreferencia" value="{{$usuario->pontoreferencia or old('pontoreferencia')}}" >
+                                            </div>
+                                        </div>                                                
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <label class="form-label">Longitude</label>
+                                                <input type="text" class="form-control text-uppercase" autocomplete="off" id="lat" name="lat" value="{{$usuario->lat or old('lat')}}" >
+                                            </div>
+                                        </div>                                                
+                                    </div>
+    
+                                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">                                                
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <label class="form-label">Longitude</label>
+                                                <input type="text" class="form-control text-uppercase" autocomplete="off" id="lgn" name="lgn" value="{{$usuario->lgn or old('lgn')}}" >
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="row icon-box-list" style=" cursor: pointer;     margin-top: auto;">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                            <p><i class="feather icon-map-pin"></i></p>
+                                        </div>  
+                                    </div>
         
                                     <div class="col-sm-4 col-xs-12">
                                         <div class="form-group form-float">                                 
                                             <div class="form-line">
-                                                <input type="text" class="form-control text-uppercase" autocomplete="off" id="telefone" value="{{$usuario->telefone or old('telefone')}}" name="telefone">
                                                 <label class="form-label">Telefone</label>
+                                                <input type="text" class="form-control text-uppercase" autocomplete="off" id="telefone" value="{{$usuario->telefone or old('telefone')}}" name="telefone">
                                             </div>                                
                                         </div>   
                                     </div>    
-                                  
-                                </div>   
-                                
-    
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="form-group form-float">                                 
+                                            <div class="form-line">
+                                                <label class="form-label">Celular</label>
+                                                <input type="text" class="form-control inputmask-phone" autocomplete="off" id="celular" value="{{$usuario->celular or old('celular')}}" name="celular">
+                                            </div>                                
+                                        </div>   
+                                    </div>
+                                </div>       
                             </div>        
     
                         </div>   
@@ -251,12 +284,12 @@
                         <div class="form-group">  
                             <div class="button-demo">    
                                 <button type="submit" class="btn btn-primary waves-effect">
-                                    <i class="material-icons">save</i>
+                                    <i class="feather icon-check"></i>
                                     <span>Salvar</span> 
                                 </button> 
                             
-                                <button type="button" class="btn btn-grey" onclick="canceledit()" >
-                                    <i class="material-icons">reply</i>
+                                <button type="button" class="btn btn-light" onclick="canceledit()" >
+                                    <i class="dripicons-backspace"></i>
                                     <span>Cancelar</span> 
                                 </button>
                                                          
@@ -274,9 +307,16 @@
 <!-- End Contentbar -->
 @endsection 
 @section('script')
-
+<script src="{{asset('orbiter/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js')}}"></script>
+<script src="{{asset('orbiter/plugins/bootstrap-inputmask/jquery.inputmask.bundle.min.js')}}"></script>
+<script src="{{asset('orbiter/plugins/bootstrap-tagsinput/typeahead.bundle.js')}}"></script>
     <script>
+        $(document).ready(function() {
+            $('#celular').inputmask("(99) 99999-9999");
+            $('#telefone').inputmask("(99) 9999-99999");
+        });
         $(function() {
+           
             $('input').keyup(function() {
             if(this.name!='password' && this.name!='email' ){
                 this.value = this.value.toLocaleUpperCase();
