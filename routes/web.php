@@ -40,6 +40,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::resource('/lojas','LojasController');
     Route::resource('/usuarios','UsersController');
     Route::resource('/tipoprodutos','TipoProdutoController');
+    Route::resource('/produtos','ProdutosController');
     Route::resource('/tipoderegistros','TipoRegistroController');
     Route::resource('/carregamentos','CarregamentosController');
     Route::resource('/pesquisa','Pesquisa');

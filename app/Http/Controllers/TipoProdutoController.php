@@ -15,7 +15,7 @@ class TipoProdutoController extends Controller
     public function index(tipoprodutos $tipoprodutos)
     {
         $title = 'Cadastro de Tipo de Produtos';
-        $tipoprodutos =  $tipoprodutos->all();
+        $tipoprodutos =  $tipoprodutos->paginate(10);;
         return view('versao1.tipoprodutos', compact('tipoprodutos','title')); 
     }
 

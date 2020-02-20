@@ -156,11 +156,11 @@
                                             <div class="demo-checkbox">
                                             @if(isset($usuario))
                                                 @if($usuario->administrador==true)    
-                                                    <input type="checkbox" id="administrador" name ="administrador" value="on" checked>
-                                                    
-                                                @endif 
+                                                    <input type="checkbox" id="administrador" name ="administrador" value="on" checked>                                                    
+                                                
                                                 @else
                                                     <input type="checkbox" id="administrador" value="0" unchecked name ="administrador">
+                                                @endif    
                                             @endif
                                             <label for="administrador">Acesso Web Admin</label>                                    
                                             </div>                              
