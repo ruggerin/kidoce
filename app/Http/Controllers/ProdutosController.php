@@ -41,9 +41,32 @@ class ProdutosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Produtos $produtos)
     {
-        //
+
+        $dataFrom= $request->except(['_token','0']);
+        $id = $request->input('produtoid');
+        
+       
+
+        if($id !=0 ){
+            $produto =    $produtos->find($id);
+            $insert  = $produto->update( $dataFrom); 
+        }else{
+            $insert = $produtos->insert($dataFrom);
+        }
+
+        if($insert ){
+           
+            return redirect()->route('produtos.index')->with(['message'=> 'State saved correctly!!!']); 
+        }    
+
+        else
+            return ['satus'=>'2', 'mensagem'=>'Erro ao inserir'];
+      
+
+
+
     }
 
     /**
@@ -63,9 +86,10 @@ class ProdutosController extends Controller
      * @param  \App\Models\Produtos  $produtos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Produtos $produtos)
+    public function edit(Produtos $produtos, $id)
     {
-        //
+        $produto = $produtos->find($id);
+        return $produto;
     }
 
     /**

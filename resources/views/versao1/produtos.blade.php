@@ -13,84 +13,95 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-    
-            <div class="modal-body" id="bodymodal"  style="visibility:hidden">
-                <form  method="post" action="{{route('produtos.update',0)}}">
-                    <input type="hidden" name="_token" value ="{{csrf_token()}}">
-                    <div class="row clearfix">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label class="form-label">Código Interno</label>
-                                    <input type="text" class="form-control text-uppercase" autocomplete="off" id="produtoid" name="produtoid"  value ="0" readonly>
+            <form  method="post"  id="formModal" action="{{route('produtos.store',0)}}">
+                <div class="modal-body" id="bodymodal"  style="visibility:hidden">
+                    
+                        <input type="hidden" name="_token" value ="{{csrf_token()}}">
+                        <div class="row clearfix">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label class="form-label">Código Interno</label>
+                                        <input type="text" class="form-control text-uppercase" autocomplete="off" id="produtoid" name="produtoid"  value ="0" readonly>
+                                    </div>
+                                </div>
+                            </div>    
+
+                            <div class="col-sm-12">
+                                <div class="form-group">                                        
+                                    <div class="form-line">
+                                        <label class="form-label">Descrição</label>
+                                        <input type="text" class="form-control text-uppercase " autocomplete="off" id="produto" value ="0" name="produto"  >
+                                </div>
                                 </div>
                             </div>
-                        </div>    
 
-                        <div class="col-sm-12">
-                            <div class="form-group">                                        
-                                <div class="form-line">
-                                    <label class="form-label">Descrição</label>
-                                    <input type="text" class="form-control text-uppercase " autocomplete="off" id="descricao" value ="0" name="descricao"  >
-                              </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                <label>Categoria de Produtos</label>
+                                <select class="form-control" name="categoria_id" id="categoria_id" >                                                                   
+                                    <option>--Selecione--</option>
+                                    @foreach($categorias as $categoria)      
+                                        <option value="{{$categoria->categid}}" >{{$categoria->descricao}}</option>                                 
+                                    @endforeach
+                                </select>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                            <label>Categoria de Produtos</label>
-                            <select class="form-control" name="categoria_id" id="categoria_id" >                                                                   
-                                <option value="" >--Todos--</option> 
-                                @foreach($categorias as $categoria)      
-                                    <option value="{{$categoria->categid}}" {{ isset($_GET['categoria']) && $_GET['categoria']== $categoria? 'selected' :'' }} >{{$categoria->descricao}}</option>                                 
-                                @endforeach
-                            </select>
+                            <div class="col-sm-12">
+                                <div class="form-group">                                        
+                                    <div class="form-line">
+                                        <label class="form-label">Valor de Conversão (Receitas)</label>
+                                        <input type="number" class="form-control" autocomplete="off" id="pontoconvreceita" value ="0" name="pontoconvreceita"  >
+                                </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-sm-12">
-                            <div class="form-group">                                        
-                                <div class="form-line">
-                                    <label class="form-label">Valor de Conversão (Receitas)</label>
-                                    <input type="number" class="form-control" autocomplete="off" id="pontoconvreceita" value ="0" name="pontoconvreceita"  >
-                              </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">                                        
+                                    <div class="form-line">
+                                        <label class="form-label">Unidade Medida</label>
+                                        <input type="number" class="form-control" autocomplete="off" id="unidmedid" value ="0" name="unidmedid"  >
+                                </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">                                        
-                                <div class="form-line">
-                                    <label class="form-label">Preço de Custo</label>
-                                    <input type="number" class="form-control" autocomplete="off" id="precocusto" value ="0" name="precocusto"  >
-                              </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">                                        
+                                    <div class="form-line">
+                                        <label class="form-label">Preço de Custo</label>
+                                        <input type="number" class="form-control" autocomplete="off" id="precocusto" value ="0" name="precocusto"  >
+                                </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">                                        
-                                <div class="form-line">
-                                    <label class="form-label">Qtd. Estoque(QCR)</label>
-                                    <input type="number" class="form-control" autocomplete="off" id="qtest" value ="0" name="qtest"  >
-                              </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">                                        
+                                    <div class="form-line">
+                                        <label class="form-label">Qtd. Estoque(QCR)</label>
+                                        <input type="number" class="form-control" autocomplete="off" id="qtest" value ="0" name="qtest"  >
+                                </div>
+                                </div>
                             </div>
-                        </div>
-                       
-                    </div>
                         
-                </form>  
-                <div class="demo-preloader" id="demo-preloader"  >
-                        <img src="{{ URL::asset('ambiente/images/loading.gif')}}" width="50" height="50" />
-                </div>         
-            </div>   
+                        </div>
+                            
+                    
+                    <div class="demo-preloader" id="demo-preloader"  >
+                            <img src="{{ URL::asset('ambiente/images/loading.gif')}}" width="50" height="50" />
+                    </div>         
+                </div>   
               
-            <div class="modal-footer">
-             
-                <button type="submit" class="btn btn-primary waves-effect">
-                    Salvar
-                </button> 
-            
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <div class="modal-footer">
+                
+                    <button type="submit" class="btn btn-primary waves-effect">
+                        Salvar
+                    </button> 
+                
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 
-            </div>
+                </div>
+            </form>
         </div>
+        
     </div>
 </div>
 
@@ -192,7 +203,7 @@
                                 <td>
                                     <div class="btn-group btn-group-sm" style="float: none;">     
                                                                         
-                                        <button type="button" class="tabledit-edit-button btn btn-sm btn-info"  onclick="editarUsuario({{$prod->id}})" style="float: none; margin: 5px;">
+                                        <button type="button" class="tabledit-edit-button btn btn-sm btn-info"  onclick="showFormEditar({{$prod->produtoid}})" style="float: none; margin: 5px;">
                                             <span class="ti-pencil"></span>
                                         </button>
                                 
@@ -233,19 +244,24 @@
         if(id!=0){
            // document.getElementById("formModal").action='#';
             $.ajax({
-                url: 'tipoderegistros/'+id+'/edit',
+                url: 'produtos/'+id+'/edit',
                 dataType: 'json',
                 
                 success: function(data) {
                 
-                    document.getElementById("tiporegid").value=data.tiporegid;
-                    document.getElementById("descricao").value=data.descricao;
+                    document.getElementById("produtoid").value=data.produtoid;
+                    document.getElementById("produto").value=data.produto;
+                    document.getElementById("pontoconvreceita").value=data.pontoconvreceita;
+                    document.getElementById("precocusto").value=data.precocusto;
+                    document.getElementById("qtest").value=data.qtest;
+                    document.getElementById("categoria_id").value = data.categoria_id;
+
                     document.getElementById("demo-preloader").style.visibility='collapse';
                     document.getElementById("bodymodal").style.visibility='visible';
                         
                 },
                 error:function(request, status, error) {
-                    console.log("ajax call went wrong:" + request.responseText);
+                    console.log("ajax call went wrong:" + request);
                     document.getElementById("demo-preloader").style.visibility='collapse';
                     document.getElementById("bodymodal").style.visibility='visible';
                 }            
@@ -253,7 +269,7 @@
         }else{
             document.getElementById("demo-preloader").style.visibility='collapse';
             document.getElementById("bodymodal").style.visibility='visible';
-            document.getElementById("descricao").value='';
+            document.getElementById("produto").value='';
         }  
     
     }
