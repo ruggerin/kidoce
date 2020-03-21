@@ -89,7 +89,9 @@ class ProdutosController extends Controller
     public function edit(Produtos $produtos, $id)
     {
         $produto = $produtos->find($id);
-        return $produto;
+        $unidadeMedida = $this->pegarUnidadeMedida();
+        $datareponse=['produto'=>$produto,'unidademedida' =>$unidadeMedida];
+        return  $datareponse;
     }
 
     /**
@@ -119,6 +121,7 @@ class ProdutosController extends Controller
         $categorias = new ProdutosCategorias();
         return $categorias->all(); 
     }
+
 
     public function pegarUnidadeMedida(){
         $unidadeMedida = new \App\Models\UnidadeMedida();

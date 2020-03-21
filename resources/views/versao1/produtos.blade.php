@@ -51,8 +51,17 @@
                             <div class="col-sm-12">
                                 <div class="form-group">                                        
                                     <div class="form-line">
-                                        <label class="form-label">Valor de Conversão (Receitas)</label>
+                                        <label class="form-label">Conversão Entrada(QTD Master)</label>
                                         <input type="number" class="form-control" autocomplete="off" id="pontoconvreceita" value ="0" name="pontoconvreceita"  >
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-group">                                        
+                                    <div class="form-line">
+                                        <label class="form-label">Unidade Entrada</label>
+                                        <input type="number" class="form-control" autocomplete="off" id="unidmedestid" value ="0" name="unidmedestid"  >
                                 </div>
                                 </div>
                             </div>
@@ -62,23 +71,25 @@
                                     <div class="form-line">
                                         <label class="form-label">Unidade Medida</label>
                                         <input type="number" class="form-control" autocomplete="off" id="unidmedid" value ="0" name="unidmedid"  >
-                                </div>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="col-sm-12">
                                 <div class="form-group">                                        
                                     <div class="form-line">
-                                        <label class="form-label">Preço de Custo</label>
+                                        <label class="form-label">Preço de Compra</label>
                                         <input type="number" class="form-control" autocomplete="off" id="precocusto" value ="0" name="precocusto"  >
-                                </div>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="col-sm-12">
                                 <div class="form-group">                                        
                                     <div class="form-line">
                                         <label class="form-label">Qtd. Estoque(QCR)</label>
                                         <input type="number" class="form-control" autocomplete="off" id="qtest" value ="0" name="qtest"  >
-                                </div>
+                                    </div>
                                 </div>
                             </div>
                         
@@ -231,74 +242,31 @@
 @endsection
 @section('script')
 <script>
-     function showFormEditar(id){
-        document.getElementById("demo-preloader").style.visibility='visible';
-        document.getElementById("bodymodal").style.visibility='collapse';              
-        $(document).ready(function(){
-            $("#modalForm").modal({
-                backdrop: 'static',
-                keyboard: false
-            });
-        });
-
-        if(id!=0){
-           // document.getElementById("formModal").action='#';
-            $.ajax({
-                url: 'produtos/'+id+'/edit',
-                dataType: 'json',
-                
-                success: function(data) {
-                
-                    document.getElementById("produtoid").value=data.produtoid;
-                    document.getElementById("produto").value=data.produto;
-                    document.getElementById("pontoconvreceita").value=data.pontoconvreceita;
-                    document.getElementById("precocusto").value=data.precocusto;
-                    document.getElementById("qtest").value=data.qtest;
-                    document.getElementById("categoria_id").value = data.categoria_id;
-
-                    document.getElementById("demo-preloader").style.visibility='collapse';
-                    document.getElementById("bodymodal").style.visibility='visible';
-                        
-                },
-                error:function(request, status, error) {
-                    console.log("ajax call went wrong:" + request);
-                    document.getElementById("demo-preloader").style.visibility='collapse';
-                    document.getElementById("bodymodal").style.visibility='visible';
-                }            
-            });
-        }else{
-            document.getElementById("demo-preloader").style.visibility='collapse';
-            document.getElementById("bodymodal").style.visibility='visible';
-            document.getElementById("produto").value='';
-        }  
     
-    }
-function novaLojas(){
-    window.open("{{ route('lojas.create')}}","_self");
-}
+    $(function () {
 
-
-$(function () {
-   
     @if(session('message'))
     swal("Sucesso", "As alterações do cadastro foram executadas com sucesso", "success");
     @endif
-     //Tooltip
-     $('[data-toggle="tooltip"]').tooltip({
+    //Tooltip
+    $('[data-toggle="tooltip"]').tooltip({
         container: 'body'
     });
 
     //Popover
     $('[data-toggle="popover"]').popover();
 
-})
+    })
+   
 </script>
 <script src="{{ URL::asset('ambiente/js/pages/ui/animations.js')}}"></script>
 <script src="{{ URL::asset('ambiente/plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
 <script src="{{ URL::asset('ambiente/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
 
-   <!-- SweetAlert Plugin Js -->
-   <script src="{{ URL::asset('ambiente/plugins/sweetalert/sweetalert.min.js')}}"></script>
+<!-- SweetAlert Plugin Js -->
+<script src="{{ URL::asset('ambiente/plugins/sweetalert/sweetalert.min.js')}}"></script>
+
+<script src="{{ URL::asset('orbiter/js/views/produtos.js')}}"></script>
 
 
 
