@@ -1,3 +1,53 @@
+$(document).ready(function() {
+    $('#precocusto').inputmask('decimal', {
+        'alias': 'numeric',
+        
+        'autoGroup': true,
+        'digits': 3,
+        'radixPoint': ",",
+        'digitsOptional': false,
+        'allowMinus': false,
+        /*'prefix': 'R$ ',*/
+        'placeholder': ''
+    });
+   
+});
+
+$(function() {
+  
+    $('#formModal').submit(function(){     
+        alert('teste');
+        return null;
+        
+        var dados = jQuery( this ).serialize();
+        //collapse
+        /*document.getElementById('btnsubmit').disabled =true;
+        document.getElementById('animacaobotao').style.display = 'inline-block';*/
+        dados+='&numprojeto='+numprojeto;
+        //console.log(dados);
+        jQuery.ajax({
+            type: "POST",
+            url: 'tarefas/update',      
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: dados,
+            success: function( data )
+            {
+                console.log(data) ; 
+                recarregarTasks();                   
+               
+            }
+        });
+        $("#modalTask").modal('hide');
+        return false;
+    });
+
+});
+
+
+
+
 function showFormEditar(id){
     document.getElementById("demo-preloader").style.visibility='visible';
     document.getElementById("bodymodal").style.visibility='collapse';              

@@ -13,7 +13,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form  method="post"  id="formModal" action="{{route('produtos.store',0)}}">
+            {{--<form  method="post"  id="formModal" action="{{route('produtos.store',0)}}">--}}
+            <form  method="post"  id="formModal">
                 <div class="modal-body" id="bodymodal"  style="visibility:hidden">
                     
                         <input type="hidden" name="_token" value ="{{csrf_token()}}">
@@ -47,7 +48,7 @@
                                 </select>
                                 </div>
                             </div>
-
+                            <h5 class="card-title">Informações de entrada</h5>
                             <div class="col-sm-12">
                                 <div class="form-group">                                        
                                     <div class="form-line">
@@ -70,7 +71,7 @@
                                 <div class="form-group">                                        
                                     <div class="form-line">
                                         <label class="form-label">Unidade Medida</label>
-                                        <input type="number" class="form-control" autocomplete="off" id="unidmedid" value ="0" name="unidmedid"  >
+                                        <input  class="form-control" autocomplete="off" id="unidmedid" value ="0" name="unidmedid"  >
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +80,7 @@
                                 <div class="form-group">                                        
                                     <div class="form-line">
                                         <label class="form-label">Preço de Compra</label>
-                                        <input type="number" class="form-control" autocomplete="off" id="precocusto" value ="0" name="precocusto"  >
+                                        <input class="form-control" autocomplete="off" id="precocusto" value ="0" name="precocusto"  >
                                     </div>
                                 </div>
                             </div>
@@ -265,10 +266,9 @@
 
 <!-- SweetAlert Plugin Js -->
 <script src="{{ URL::asset('ambiente/plugins/sweetalert/sweetalert.min.js')}}"></script>
-
+<script src="{{ URL::asset('orbiter/plugins/bootstrap-inputmask/jquery.inputmask.bundle.min.js')}}"></script>
+<script src="{{ URL::asset('orbiter/js/custom/custom-form-inputmask.js')}}"></script>
 <script src="{{ URL::asset('orbiter/js/views/produtos.js')}}"></script>
-
-
 
 @endsection
 

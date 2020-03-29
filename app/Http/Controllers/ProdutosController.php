@@ -46,7 +46,9 @@ class ProdutosController extends Controller
 
         $dataFrom= $request->except(['_token','0']);
         $id = $request->input('produtoid');
+        $dataFrom['precocusto']= str_replace($dataFrom['precocusto'], "," , "." );
         
+        return $dataFrom['precocusto'];
        
 
         if($id !=0 ){
