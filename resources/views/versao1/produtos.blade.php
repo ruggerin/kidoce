@@ -48,7 +48,9 @@
                                 </select>
                                 </div>
                             </div>
-                            <h5 class="card-title">Informações de entrada</h5>
+                            <div class="col-sm-12">
+                                <h5 class="card-title">Informações de entrada</h5>
+                            </div>
                             <div class="col-sm-12">
                                 <div class="form-group">                                        
                                     <div class="form-line">
