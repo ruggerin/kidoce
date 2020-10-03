@@ -44,7 +44,7 @@
                             <a href="{{route('tipoprodutos.index')}}">Tipo de Produtos</a>
                         </li>
                         <li>
-                            <a href="#">Produtos</a>
+                            <a href="{{route('produtos.index')}}">Produtos</a>
                         </li>
 
                         <li>

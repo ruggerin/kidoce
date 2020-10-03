@@ -2,8 +2,6 @@
 @section('content')
 
 
-
-
 <div class="right_col" role="main">
 
 
@@ -13,9 +11,9 @@
             @if(isset($_GET['mensagem']) && $_GET['mensagem']=='1')
             <br>
             <div class="alert alert-success alert-dismissible fade in" style="margin-top:30px" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                                </button>
-                                <strong>Sucesso modificado com sucesso!</strong> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                </button>
+                <strong>Sucesso modificado com sucesso!</strong> 
             </div>
             <script>
             $(".alert").alert()
